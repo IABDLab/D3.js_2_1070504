@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>parsing</title>
+	<script src="https://d3js.org/d3.v3.js"></script>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+
+
+		//Create a data parser
+		//%b:abbreviated month name
+		var ParseDate = d3.time.format("%d-%b-%y").parse;
+
+		//Read csv file
+		d3.tsv("http://simplysanad.com/d3js/data.tsv", function(error, data){
+			// Parse data into useable format
+			data.forEach(function(d){
+				//forEach(): iterate through every data value
+				//ParseDate(): format date
+				d.date = ParseDate(d.date);
+				// the + sign cinverts numeric string to number
+				d.close = +d.close;
+			});
+
+			//Print the data as a table in the console
+			console.table(data);
+		})
+		
+		//Create a line generator
+		var valueline = d3.svg.line()
+		.x(function(d){
+			return xScale(d.date);
+		})
+		.y(function(d){
+			return yScale(d.close);
+		});
+
+
+
+	</script>
+
+</body>
+</html>

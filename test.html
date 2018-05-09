@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+   <meta charset="utf-8">	<!-- 可以顯示中文 -->
+   <title>好好玩的barchart</title> <!-- 網頁標題 -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+	var data_values = [5,10,30,8,45,24,16,55,60,45,32,18,11,3];
+	var svg = d3.select("body").append("svg").attr({"width":500,"height":500});//建一個svg的空間，設定長寬
+	var bars = svg.selectAll("rect").data(data_values).enter().append("rect").attr("width","25px").attr("height", function(d){ return d*5; });
+var max = d3.;
+var min = d3.;
+bars.attr("x", function(d,i){ return i*30; });
+bars.attr("y", function(d){ return 400-d*5; });
+bars.attr("fill", "steelblue");
+bars.filter(function(d){ return d==max; }).attr("fill","green");
+bars.filter(function(d){ return d==min; }).attr("fill","red");
+</script>
+</body>
+</html>

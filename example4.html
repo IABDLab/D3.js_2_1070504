@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>data_loading</title>
+	<script src="https://d3js.org/d3.v3.js"></script>
+</head>
+<body>
+
+	<script type="text/javascript">
+		d3.tsv("http://simplysanad.com/d3js/data.tsv" , function(error , data){
+			if (error)
+				// If error, print the error message in the console.
+				console.log(error);
+			else
+				// Print the data as a table in the console.
+				console.table(data);
+		});
+
+		//d3.tsv(...):loads a tab separated value file
+		//console.table(data):prints the data as a table
+		
+
+
+
+	</script>
+
+</body>
+</html>
